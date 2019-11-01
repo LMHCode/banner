@@ -12,9 +12,9 @@
   contanier.style.overflow = 'hidden'
   contanier.style.whiteSpace = "nowrap"
   ul.style.position = 'absolute'
-  ul.style.width = li.length * contanierWidth + 'px'
   ul.style.height = contanierHeight + 'px'
   ul.appendChild(li[0].cloneNode(true))
+  ul.style.width = li.length * contanierWidth + 'px'
   console.log(ul)
 
   for (var i = 0; i < li.length; i++) {
@@ -22,6 +22,7 @@
     li[i].style.height = contanierHeight + 'px'
     li[i].firstElementChild.style.width = contanierWidth + 'px'
     li[i].firstElementChild.style.height = contanierHeight + 'px'
+    li[i].style.float = 'left'
   }
 
   start(timer, currentIndex)
