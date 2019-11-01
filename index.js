@@ -15,7 +15,7 @@
   ul.style.height = contanierHeight + 'px'
   ul.appendChild(li[0].cloneNode(true))
   ul.style.width = li.length * contanierWidth + 'px'
-  console.log(ul)
+  // ul.style.transition = 'all 1s'
 
   for (var i = 0; i < li.length; i++) {
     li[i].style.width = contanierWidth + 'px'
@@ -28,17 +28,11 @@
   start(timer, currentIndex)
   function start (timer, currentIndex) {
     timer = setInterval (function () {
-      if (currentIndex < li.length) {
-        ul.style.transition = 'all 1s'
-        ul.style.left = -(contanierWidth*currentIndex) + 'px'
-        console.log(currentIndex)
-      } else {
-        ul.style.transition = 'none'
-        currentIndex = 1
-        ul.style.left = -(contanierWidth*currentIndex) + 'px'
-      }
       currentIndex ++
+      ul.style.left = -(currentIndex*contanierWidth) + 'px'
+      if (currentIndex >= li.length - 1) {
+        currentIndex = 0
+      }
     }, times)
   }
-  console.log(contanierWidth)
 })()
