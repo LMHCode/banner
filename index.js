@@ -3,7 +3,7 @@
   var contanierWidth = contanier.offsetWidth;
   var contanierHeight = contanier.offsetHeight;
   var timer = null;
-  var times = 2500;
+  var times = 1000;
   var currentIndex = 0;
 
   var ul = document.getElementsByTagName('ul')[0]
@@ -29,13 +29,20 @@
   function start (timer, currentIndex) {
     timer = setInterval (function () {
       if (currentIndex >= li.length - 1) {
-        currentIndex = -1
         ul.style.transition = 'none'
+        ul.style.left = 0 + 'px'
+        currentIndex = 0
       } else {
         ul.style.transition = 'all 1s'
+        currentIndex ++
+        ul.style.left = -(currentIndex*contanierWidth) + 'px'
+        if (currentIndex >= li.length - 1) {
+          times = 1
+        } else {
+          times = 2500
+        }
       }
-      currentIndex ++
-      ul.style.left = -(currentIndex*contanierWidth) + 'px'
     }, times)
   }
+  
 })()
