@@ -15,7 +15,7 @@
   ul.style.height = contanierHeight + 'px'
   ul.appendChild(li[0].cloneNode(true))
   ul.style.width = li.length * contanierWidth + 'px'
-  ul.style.transition = 'all 1s'
+  // ul.style.transition = 'all 1s'
 
   for (var i = 0; i < li.length; i++) {
     li[i].style.width = contanierWidth + 'px'
@@ -25,18 +25,29 @@
     li[i].style.float = 'left'
   }
 
-  start(timer, currentIndex)
-  function start (timer, currentIndex) {
-    timer = setInterval (function () {
-      if (currentIndex >= li.length - 1) {
-        ul.style.transition = 'none'
-        ul.style.left = 0 + 'px'
-        currentIndex = 0
-      } else {
-        ul.style.transition = 'all 1s'
-        currentIndex ++
-        ul.style.left = -(currentIndex*contanierWidth) + 'px'
-      }
-    }, times)
+  // start(timer, currentIndex)
+  // function start (timer, currentIndex) {
+  //   timer = setInterval (function () {
+  //     if (currentIndex >= li.length - 1) {
+  //       ul.style.transition = 'none'
+  //       ul.style.left = 0 + 'px'
+  //       currentIndex = 0
+  //     } else {
+  //       ul.style.transition = 'all 1s'
+  //       currentIndex ++
+  //       ul.style.left = -(currentIndex*contanierWidth) + 'px'
+  //     }
+  //   }, times)
+  // }
+  function move() {
+    if (currentIndex >= li.length - 1) {
+      ul.style.left = 0 + 'px'
+      currentIndex = 0
+    } else {
+      currentIndex ++
+      ul.style.left = -(currentIndex*contanierWidth) + 'px'
+    }
   }
+
+  var verticalMove = setInterval(move, times);//数值越大，滚动速度越慢
 })()
