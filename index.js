@@ -36,13 +36,7 @@
         ul.style.transition = 'all 1s'
         currentIndex ++
         ul.style.left = -(currentIndex*contanierWidth) + 'px'
-        if (currentIndex >= li.length - 1) {
-          times = 1
-        } else {
-          times = 2500
-        }
       }
     }, times)
   }
-  
 })()
