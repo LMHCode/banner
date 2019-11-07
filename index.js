@@ -1,16 +1,16 @@
-(function(){
-  var contanier = document.getElementsByClassName('contanier')[0];
-  var contanierWidth = contanier.offsetWidth;
-  var contanierHeight = contanier.offsetHeight;
-  var timer = null;
-  var times = 1000;
-  var currentIndex = 0;
+;(function() {
+  var contanier = document.getElementsByClassName('contanier')[0]
+  var contanierWidth = contanier.offsetWidth
+  var contanierHeight = contanier.offsetHeight
+  var timer = null
+  var times = 1000
+  var currentIndex = 0
 
   var ul = document.getElementsByTagName('ul')[0]
-  var li =  document.getElementsByTagName('li')
+  var li = document.getElementsByTagName('li')
   contanier.style.position = 'relative'
   contanier.style.overflow = 'hidden'
-  contanier.style.whiteSpace = "nowrap"
+  contanier.style.whiteSpace = 'nowrap'
   ul.style.position = 'absolute'
   ul.style.height = contanierHeight + 'px'
   ul.appendChild(li[0].cloneNode(true))
@@ -41,13 +41,22 @@
   // }
   function move() {
     if (currentIndex >= li.length - 1) {
+      ul.setAttribute('class', '')
       ul.style.left = 0 + 'px'
       currentIndex = 0
+      // debugger
+      
+      setTimeout(() => {
+        ul.setAttribute('class', 'transition')
+        currentIndex++
+        ul.style.left = -(currentIndex * contanierWidth) + 'px'
+      })
     } else {
-      currentIndex ++
-      ul.style.left = -(currentIndex*contanierWidth) + 'px'
+      ul.setAttribute('class', 'transition')
+      currentIndex++
+      ul.style.left = -(currentIndex * contanierWidth) + 'px'
     }
   }
-
-  var verticalMove = setInterval(move, times);//数值越大，滚动速度越慢
+  
+  var verticalMove = setInterval(move, times) //数值越大，滚动速度越慢
 })()
